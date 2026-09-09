@@ -3,7 +3,8 @@
 
 A personal portfolio site built from scratch in HTML and CSS for WRIT 40363. It introduces my background, skills, internship experience, and projects.
 
-**Live site:** YOUR-LIVE-SITE-URL-HERE
+**Live site:** 
+https://briellehardman.github.io/portfolio-briellehardman/
 
 ## Built with
 
