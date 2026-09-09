@@ -104,6 +104,10 @@ a {
 
 /* ==========================
    4. LAYOUT
+   Breakpoints used in this file:
+     768px — tablet and larger
+   (CSS variables cannot be used inside @media conditions,
+    so breakpoints are documented here instead of tokenized.)
    ========================== */
 
 body {
@@ -183,14 +187,13 @@ section {
 
 .skills-grid {
     list-style: none;
-    display: flex;
-    flex-wrap: wrap;
+    padding-left: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
     gap: var(--space-md);
 }
 
 .skill-card {
-    flex: 1;
-    min-width: 12rem;
     padding: var(--space-md);
     background-color: var(--color-surface-alt);
     border-radius: var(--radius-md);
@@ -231,8 +234,9 @@ section {
 
 .project-list {
     list-style: none;
-    display: flex;
-    flex-direction: column;
+    padding-left: 0;
+    display: grid;
+    grid-template-columns: 1fr;
     gap: var(--space-lg);
 }
 
@@ -242,4 +246,19 @@ section {
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-sm);
+}
+
+
+/* ==========================
+   MEDIA QUERY
+   ========================== */
+
+@media (min-width: 768px) {
+    .project-list {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .project-card.featured {
+        grid-column: span 2;
+    }
 }
