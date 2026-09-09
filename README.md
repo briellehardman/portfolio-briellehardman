@@ -1,10 +1,8 @@
-# portfolio-briellehardman
 # Brielle Hardman — Personal Portfolio
 
 A personal portfolio site built from scratch in HTML and CSS for WRIT 40363. It introduces my background, skills, internship experience, and projects.
 
-**Live site:** 
-https://briellehardman.github.io/portfolio-briellehardman/
+**Live site:** https://briellehardman.github.io/portfolio-briellehardman/
 
 ## Built with
 

@@ -101,6 +101,10 @@ a {
     color: var(--color-accent);
 }
 
+ul {
+    padding-left: var(--space-lg);
+}
+
 
 /* ==========================
    4. LAYOUT
@@ -176,7 +180,8 @@ nav a:hover {
     text-decoration: none;
 }
 
-section {
+section,
+aside {
     margin-bottom: var(--space-xl);
 }
 
