@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Swipe through delicious ideas for cooking at home or eating out.">
+    <meta name="theme-color" content="#f7f5ef">
+    <meta name="referrer" content="no-referrer">
+    <title>Swipe &amp; Bite</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+    <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.css">
+    <link rel="stylesheet" href="css/styles.css?v=polish-final-1">
+    <script src="js/recipe-data.js" defer></script>
+    <script src="js/recipe-data-lunch.js" defer></script>
+    <script src="js/recipe-data-dinner.js" defer></script>
+    <script src="js/recipe-data-snacks.js" defer></script>
+    <script src="js/restaurant-photos.js" defer></script>
+    <script src="js/restaurant-data-more.js" defer></script>
+    <script src="js/restaurant-photos-more.js" defer></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="" defer></script>
+    <script src="https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.js" defer></script>
+    <script src="https://unpkg.com/@maplibre/maplibre-gl-leaflet@0.1.4/leaflet-maplibre-gl.js" defer></script>
+    <script src="js/app.js?v=yelp-ratings-final-2" defer></script>
+</head>
+<body class="app-initializing">
+    <div class="app-shell">
+        <header class="topbar">
+            <a class="brand" href="#home" aria-label="Swipe and Bite home">
+                <span class="brand-icon" aria-hidden="true">S&amp;B</span>
+                <span class="brand-name">Swipe <span>&amp;</span> Bite</span>
+            </a>
+            <p class="topbar-note">A little inspiration for your next bite</p>
+        </header>
+
+        <main>
+            <section class="welcome" aria-labelledby="welcome-title">
+                <div>
+                    <p class="eyebrow">GOOD FOOD, NO GUESSWORK</p>
+                    <h1 id="welcome-title">Find your next <em>favorite.</em></h1>
+                    <p class="welcome-copy">Swipe through something delicious, whether you're cooking in or heading out.</p>
+                </div>
+                <span class="welcome-doodle" aria-hidden="true">✳</span>
+            </section>
+
+            <nav class="main-tabs" aria-label="Food discovery pages" role="tablist">
+                <button class="main-tab is-active" id="tab-home" type="button" role="tab" aria-selected="true" aria-controls="page-home" data-page="home">
+                    <span aria-hidden="true">⌂</span> Cook at Home
+                </button>
+                <button class="main-tab" id="tab-out" type="button" role="tab" aria-selected="false" aria-controls="page-out" data-page="out" tabindex="-1">
+                    <span aria-hidden="true">↗</span> Eat Out
+                </button>
+                <button class="main-tab saved-tab" id="tab-saved" type="button" role="tab" aria-selected="false" aria-controls="page-saved" data-page="saved" tabindex="-1">
+                    <span aria-hidden="true">♡</span> Saved <span class="saved-count" id="saved-count">0</span>
+                </button>
+            </nav>
+
+            <section class="discovery-page is-active" id="page-home" role="tabpanel" aria-labelledby="tab-home">
+                <div class="page-heading">
+                    <div>
+                        <p class="eyebrow">YOUR KITCHEN, YOUR RULES</p>
+                        <h2>Cook at Home</h2>
+                    </div>
+                    <label class="filter-control" for="home-filter">
+                        <span>I'm craving</span>
+                        <select id="home-filter">
+                            <option value="All">Anything</option>
+                            <option value="Breakfast">Breakfast</option>
+                            <option value="Lunch">Lunch</option>
+                            <option value="Dinner">Dinner</option>
+                            <option value="Snacks">Snacks</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="discovery-layout">
+                    <p class="side-note">A good thing is<br>worth a second look.</p>
+                    <div class="card-stage" id="home-stage" aria-live="polite"></div>
+                    <div class="side-counter"><span id="home-position">01</span><span class="counter-rule"></span><span id="home-total">06</span></div>
+                </div>
+            </section>
+
+            <section class="discovery-page" id="page-out" role="tabpanel" aria-labelledby="tab-out" hidden>
+                <div class="city-search">
+                    <label for="city-select">Where are you eating?</label>
+                    <select id="city-select">
+                        <option value="Fort Worth, TX">Fort Worth, TX</option>
+                    </select>
+                </div>
+                <div class="page-heading">
+                    <div>
+                        <p class="eyebrow">A TABLE FOR YOU</p>
+                        <h2>Eat Out</h2>
+                    </div>
+                    <label class="filter-control" for="out-filter">
+                        <span>I'm in the mood for</span>
+                        <select id="out-filter">
+                            <option value="All">Anything</option>
+                            <option value="Breakfast">Breakfast</option>
+                            <option value="Lunch">Lunch</option>
+                            <option value="Dinner">Dinner</option>
+                            <option value="Sweet Treat">Sweet Treat</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="discovery-layout">
+                    <p class="side-note">Good places make<br>good memories.</p>
+                    <div class="card-stage" id="out-stage" aria-live="polite"></div>
+                    <div class="side-counter"><span id="out-position">01</span><span class="counter-rule"></span><span id="out-total">06</span></div>
+                </div>
+            </section>
+
+            <section class="saved-page" id="page-saved" role="tabpanel" aria-labelledby="tab-saved" hidden>
+                <div class="page-heading saved-heading">
+                    <div>
+                        <p class="eyebrow">THE GOOD ONES</p>
+                        <h2>Your saved bites</h2>
+                    </div>
+                    <p class="saved-hint">Tap the heart to keep a favorite here.</p>
+                </div>
+                <div class="saved-groups" id="saved-groups">
+                    <section class="saved-group" aria-labelledby="saved-recipes-title">
+                        <div class="saved-group-heading">
+                            <h3 id="saved-recipes-title">Recipes</h3>
+                            <span id="saved-recipes-count">0</span>
+                        </div>
+                        <div class="saved-grid" id="saved-recipes"></div>
+                    </section>
+                    <section class="saved-group" aria-labelledby="saved-places-title">
+                        <div class="saved-restaurants-heading">
+                            <div class="saved-group-heading">
+                                <h3 id="saved-places-title">Restaurants</h3>
+                                <span id="saved-places-count">0</span>
+                            </div>
+                            <div class="saved-view-tools">
+                                <div class="saved-view-toggle" role="group" aria-label="Saved restaurants view">
+                                    <button class="saved-view-button is-active" id="saved-list-button" type="button" data-saved-view="list" aria-pressed="true">List</button>
+                                    <button class="saved-view-button" id="saved-map-button" type="button" data-saved-view="map" aria-pressed="false">Map</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="saved-list-view" id="saved-list-view">
+                            <div class="saved-grid" id="saved-places"></div>
+                        </div>
+                        <section class="saved-map-view" id="saved-map-view" aria-label="Map of saved restaurants" hidden>
+                            <div class="saved-map-toolbar">
+                                <label class="saved-map-city-filter" for="saved-map-city">City
+                                    <select id="saved-map-city"><option value="__all__">All Cities</option></select>
+                                </label>
+                                <button class="saved-map-location-button" id="saved-map-location" type="button">Use My Location</button>
+                                <button class="saved-map-closest-button" id="saved-map-closest" type="button" aria-pressed="false" disabled>Closest to Me</button>
+                                <p class="saved-map-status" id="saved-map-status" aria-live="polite"></p>
+                            </div>
+                            <div class="saved-map-layout">
+                                <div class="saved-map-canvas" id="saved-map" role="application" aria-label="Map showing saved restaurants"></div>
+                                <aside class="saved-nearest" id="saved-nearest" aria-live="polite" hidden>
+                                    <div class="saved-nearest-heading">
+                                        <h3>Closest to Me</h3>
+                                        <span id="saved-nearest-count"></span>
+                                    </div>
+                                    <ol id="saved-nearest-list"></ol>
+                                </aside>
+                            </div>
+                        </section>
+                    </section>
+                </div>
+            </section>
+        </main>
+
+        <footer class="app-footer"><span>Made for hungry, indecisive people.</span><span>Swipe &amp; Bite <b>•</b> 2026</span></footer>
+    </div>
+
+    <dialog class="detail-dialog" id="detail-dialog" aria-labelledby="detail-title">
+        <div class="detail-dialog-shell">
+            <button class="detail-close" id="detail-close" type="button" aria-label="Close details">×</button>
+            <div id="detail-content"></div>
+        </div>
+    </dialog>
+</body>
+</html>
