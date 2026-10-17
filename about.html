@@ -1,66 +1,99 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brielle Hardman</title>
+    <meta name="description" content="Learn about Brielle Hardman's background, interests, experience, and skills.">
+    <title>About Brielle Hardman</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
-
 <body>
-
-    <nav class="nav-container">
-        <a href="index.html" class="logo">Brielle Hardman</a>
-
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="index.html#contact">Contact</a>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <nav class="site-nav" aria-label="Main navigation">
+        <div class="nav-inner">
+            <a class="brand" href="index.html">Brielle Hardman</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html" aria-current="page">About</a>
+                <a href="index.html#projects">Projects</a>
+                <a href="https://github.com/briellehardman" target="_blank" rel="noopener">GitHub</a>
+                <a class="nav-contact" href="index.html#contact">Contact</a>
+            </div>
         </div>
     </nav>
 
-    <header>
-        <div class="header-text">
-            <h1>About Me</h1>
-            <p>
-                Hi! I’m Brielle Hardman, and I’m a senior at Texas Christian University studying
-                Communication Studies with a minor in Digital Culture and Data Analytics.
-            </p>
+    <main id="main">
+        <header class="page-hero">
+            <div class="page-shell">
+                <p class="section-kicker">A little context</p>
+                <h1 class="page-title">People, stories, and useful ideas.</h1>
+                <p class="page-lede">I'm Brielle Hardman, a senior at Texas Christian University studying Communication Studies with a minor in Digital Culture and Data Analytics.</p>
+            </div>
+        </header>
+
+        <div class="page-shell about-layout">
+            <div class="about-copy">
+                <section aria-labelledby="background-title">
+                    <p class="section-kicker">Background</p>
+                    <h2 id="background-title">From California to Texas</h2>
+                    <p>I'm originally from California and chose TCU because I wanted to experience college in a new state and become more independent. Moving to Texas gave me the opportunity to meet new people, try new things, and experience a different environment from where I grew up.</p>
+                    <p>My studies bring together communication, digital culture, and data analytics. I enjoy thinking about how people encounter information and what makes a message or experience feel clear, useful, and human.</p>
+                </section>
+                <section aria-labelledby="learning-title">
+                    <p class="section-kicker">Looking ahead</p>
+                    <h2 id="learning-title">What I want to keep learning</h2>
+                    <p>I'm interested in how apps are designed and built. I want to keep growing more confident with coding and learn how to turn an idea into something people can actually use. The web development skills I've built in this course are a foundation I plan to keep developing after graduation.</p>
+                </section>
+                <section aria-labelledby="interests-title">
+                    <p class="section-kicker">Interests</p>
+                    <h2 id="interests-title">Digital experiences, grounded in real life</h2>
+                    <p>I'm drawn to the everyday details that shape how people connect with places, food, and one another. That perspective shows up in my work, from organizing local favorites to making restaurant and recipe discovery easier to navigate.</p>
+                </section>
+            </div>
+            <aside class="about-aside" aria-labelledby="experience-aside-title">
+                <p class="section-kicker">Experience</p>
+                <h2 id="experience-aside-title">Boston Beer</h2>
+                <p>During my summer internship, I gained hands-on experience in sales and marketing, worked with retailers, supported product promotions, and interacted directly with customers.</p>
+                <p>I created a final internship presentation covering my sales experience, customer interactions, retail observations, and ideas for reaching college-age consumers.</p>
+            </aside>
         </div>
-    </header>
 
-    <main>
-
-        <section>
-            <h2>My Background</h2>
-
-            <p>
-                I’m originally from California and chose TCU because I wanted to experience college
-                in a new state and become more independent. Moving to Texas gave me the opportunity
-                to meet new people, try new things, and experience a different environment from where I grew up.
-            </p>
+        <section class="skills-section" aria-labelledby="skills-title">
+            <div class="page-shell">
+                <p class="section-kicker">Strengths in practice</p>
+                <h2 id="skills-title">Skills &amp; capabilities</h2>
+                <ul class="skills-grid">
+                    <li class="skill-card">
+                        <h3>Communication</h3>
+                        <p>Written and verbal communication shaped by my Communication Studies coursework and direct customer interactions.</p>
+                    </li>
+                    <li class="skill-card">
+                        <h3>Sales &amp; customer engagement</h3>
+                        <p>Retailer relationships, product promotions, and customer-facing experience from my internship.</p>
+                    </li>
+                    <li class="skill-card">
+                        <h3>Social media</h3>
+                        <p>Content creation experience for platforms including TikTok and Instagram.</p>
+                    </li>
+                </ul>
+            </div>
         </section>
 
-        <section>
-            <h2>What I Want to Learn</h2>
-
-            <p>
-                One of my goals is to learn how apps are designed and built. I want to become more
-                confident with coding and understand how to turn an idea into something people can
-                actually use. By the end of this course, I hope to have stronger web development
-                skills that I can continue building on after graduation.
-            </p>
+        <section class="about-cta page-shell">
+            <p class="section-kicker">See what I'm working on</p>
+            <p>Explore the projects where these interests meet practical digital work.</p>
+            <a class="button" href="index.html#projects">View selected work <span aria-hidden="true">&#8594;</span></a>
         </section>
-
     </main>
 
-    <footer>
-        <p>&copy; 2026 Brielle Hardman · Personal Portfolio</p>
+    <footer class="site-footer">
+        <div class="page-shell footer-inner">
+            <p>&copy; 2026 Brielle Hardman · Personal Portfolio</p>
+            <p><a href="mailto:briellehardman@tcu.edu">briellehardman@tcu.edu</a> · <a href="https://github.com/briellehardman" target="_blank" rel="noopener">GitHub</a></p>
+        </div>
     </footer>
-
 </body>
-
 </html>
 
 

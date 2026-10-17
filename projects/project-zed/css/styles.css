@@ -55,6 +55,22 @@ button {
 	animation: show-page 420ms ease-out both;
 }
 
+.portfolio-back-link {
+	display: inline-block;
+	margin-top: 12px;
+	padding: 7px 11px;
+	border: 1px solid var(--tomato-dark);
+	color: var(--tomato-dark);
+	font-size: 13px;
+	font-weight: 700;
+	text-decoration: none;
+}
+
+.portfolio-back-link:hover {
+	background: var(--tomato-dark);
+	color: #fff;
+}
+
 .topbar {
 	min-height: 76px;
 	display: flex;
